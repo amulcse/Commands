@@ -1,0 +1,3 @@
+- search in all file contents
+
+grep -r "teststring" /var/www/html/

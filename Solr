@@ -1,0 +1,20 @@
+Solr:
+
+
+- Create Core
+
+bin/solr create -c testcore -s 2 -rf 2
+
+- Create schema
+
+curl -X POST -H 'Content-type:application/json' --data-binary '{"add-field": {"name":"id", "type":"text_general", "multiValued":false, "stored":true}}' http://localhost:8983/solr/testcore/schema
+curl -X POST -H 'Content-type:application/json' --data-binary '{"add-field": {"name":"name", "type":"text_general", "multiValued":false, "stored":true}}' http://localhost:8983/solr/testcore/schema
+curl -X POST -H 'Content-type:application/json' --data-binary '{"add-field": {"name":"skus", "type":"text_general", "multiValued":true, "stored":true}}' http://localhost:8983/solr/testcore/schema
+
+curl -X POST -H 'Content-type:application/json' --data-binary '{"add-copy-field" : {"source":"*","dest":"_text_"}}' http://localhost:8983/solr/tbc/schema
+
+
+bin/post -c test /var/www/html/searchdata.json
+
+
+bin/solr delete -c testcore

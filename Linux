@@ -1,3 +1,5 @@
 - search in all file contents
 
 grep -r "teststring" /var/www/html/
+
+ffmpeg -i Part2.mp4 -s 320x240 Part2_min.mp4

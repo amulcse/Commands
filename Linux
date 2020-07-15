@@ -3,3 +3,19 @@
 grep -r "teststring" /var/www/html/
 
 ffmpeg -i Part2.mp4 -s 320x240 Part2_min.mp4
+
+//replace the content in a file
+sed 's/127.0.0.11/127.0.0.53/' /etc/resolv.conf 
+
+//solve DNS host resolve issue in docker 
+
+check local dns server
+
+cat /etc/resolv.conf
+
+sudo vi /etc/default/docker
+
+Remove comment on the following line:
+--dns 8.8.8.8 --dns 192.168.1.1
+
+sudo service docker restart

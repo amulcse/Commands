@@ -1,0 +1,2 @@
+#Get unqiue images from video:
+  ffmpeg -i test.mp4  -vf  "select=gt(scene\,0.1)" -vsync vfr frames/out-%03d.png
